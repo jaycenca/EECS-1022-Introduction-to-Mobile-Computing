@@ -6,6 +6,11 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+/*
+ *@author Jay Cen
+ *@description: The function of this class is to act as a controller of the "view" and the "Model". The purpose is to "display" an result
+ * that satisfy the "Model" class according to users' "values"
+ */
 public class BMIActivity extends AppCompatActivity
 {
 
@@ -18,10 +23,18 @@ public class BMIActivity extends AppCompatActivity
 
     public void buttonClicked(View v)
     {
+        //declare and initalize type View
+        //to get the values entered by users
         View weightView = findViewById(R.id.weightBox);
+
+        //declare and initalize type EditText
+        //to cast it to EditText type such that
+        //it can call the toString method in the EditText class
         EditText weightEdit = (EditText) weightView;
         String weight = weightEdit.getText().toString();
+
         String height = ((EditText) findViewById(R.id.heightBox)).getText().toString();
+
 
         BMIModel model = new BMIModel(weight, height);
         String answer = model.getBMI();
