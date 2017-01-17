@@ -35,10 +35,15 @@ public class BMIActivity extends AppCompatActivity
 
         String height = ((EditText) findViewById(R.id.heightBox)).getText().toString();
 
-
+        //instantiate a class and use the getBMI access method
         BMIModel model = new BMIModel(weight, height);
         String answer = model.getBMI();
 
+        //using the getPound access method
+        String pound = model.getPound();
+
+        //using the values of answer and pound variables to view it
         ((TextView) findViewById(R.id.answer)).setText(answer);
+        ((TextView) findViewById(R.id.pound)).setText(pound);
     }
 }

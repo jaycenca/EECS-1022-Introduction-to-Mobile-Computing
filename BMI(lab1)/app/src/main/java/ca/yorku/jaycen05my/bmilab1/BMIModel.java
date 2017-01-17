@@ -42,6 +42,18 @@ public class BMIModel
         return result;
     }
 
+    //convert kg to Pound
+    public String getPound()
+    {
+        double Pound = this.weight*2.20462;
+        return String.format("%.1f", Pound);
+        /*
+         *Using the format method from the String class,
+         * Object cant be int or string because they are primitive
+         */
+
+    }
+
     public static void main(String[] args)
     {
         /*
