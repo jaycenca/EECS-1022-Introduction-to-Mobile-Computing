@@ -43,9 +43,9 @@ public class BMIModel
     }
 
     //convert kg to Pound
-    public String getPound()
+    public String getWeightInPound()
     {
-        double Pound = this.weight*2.20462;
+        double Pound = Math.floor(this.weight*2.20462);
         return String.format("%.1f", Pound);
         /*
          *Using the format method from the String class,
@@ -67,14 +67,19 @@ public class BMIModel
 
         BMIModel model = new BMIModel("100", "1.8");
         output.println("BMIModel(\"100\", \"1.8\") is "+model.getBMI());
+        output.println("Your Pound is "+model.getWeightInPound());
 
-        model = new BMIModel("45", "1.35");
+        model = new BMIModel("45.6", "1.35");
         output.println("BMIModel(\"45\", \"1.35\") is "+model.getBMI());
+        output.println("Your Pound is "+model.getWeightInPound());
 
         model = new BMIModel("80", "1.2");
         output.println("BMIModel(\"80\", \"1.2\") is "+model.getBMI());
+        output.println("Your Pound is "+model.getWeightInPound());
 
         model = new BMIModel("65", "1.6");
         output.println("BMIModel(\"65\", \"1.6\") is "+model.getBMI());
+        output.println("Your Pound is "+model.getWeightInPound());
+
     }
 }

@@ -40,10 +40,14 @@ public class BMIActivity extends AppCompatActivity
         String answer = model.getBMI();
 
         //using the getPound access method
-        String pound = model.getPound();
+        String pound = model.getWeightInPound();
+
+        //declare and initiate with string output
+        String WIP = "Your Weight in pound is ";
+        String BMIname = "Your BMI is ";
 
         //using the values of answer and pound variables to view it
-        ((TextView) findViewById(R.id.answer)).setText(answer);
-        ((TextView) findViewById(R.id.pound)).setText(pound);
+        ((TextView) findViewById(R.id.pound)).setText(WIP+pound);
+        ((TextView) findViewById(R.id.answer)).setText("and "+BMIname+answer);
     }
 }

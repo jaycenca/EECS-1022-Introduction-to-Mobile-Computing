@@ -8,12 +8,12 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="ca.roumani.bmi.BMIActivity">
+    tools:context="ca.yorku.jaycen05my.bmilab1.BMIActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Your Weight"
+        android:text="Your Weight(in kg)"
         android:id="@+id/weightLabel"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -30,7 +30,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Your Height"
+        android:text="Your Height(in m)"
         android:id="@+id/heightLabel"
         android:layout_below="@+id/weightBox"
         android:layout_alignParentLeft="true"
@@ -60,22 +60,21 @@
         android:layout_height="wrap_content"
         android:text="Answer"
         android:id="@+id/answer"
-        android:textStyle="bold"
-        android:textColor="@android:color/holo_purple"
-        android:textSize="@dimen/abc_text_size_display_1_material"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        />
+        android:textStyle="italic"
+        android:textColor="@android:color/holo_blue_dark"
+        android:layout_below="@+id/pound"
+        android:layout_alignLeft="@+id/pound"
+        android:layout_alignStart="@+id/pound"
+        android:textSize="24dp"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Pound"
         android:id="@+id/pound"
-        android:layout_below="@+id/answer"
-        android:layout_alignLeft="@+id/answer"
-        android:layout_alignStart="@+id/answer"
-        android:layout_marginTop="63dp"
-        android:textSize="50dp"
-        android:textColor="@color/abc_btn_colored_borderless_text_material"/>
+        android:textSize="24dp"
+        android:textColor="@color/abc_btn_colored_borderless_text_material"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/heightLabel"
+        android:layout_toEndOf="@+id/heightLabel"/>
 </RelativeLayout>
