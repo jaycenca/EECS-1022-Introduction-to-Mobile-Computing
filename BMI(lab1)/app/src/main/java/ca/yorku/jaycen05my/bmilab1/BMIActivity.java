@@ -1,10 +1,13 @@
 package ca.yorku.jaycen05my.bmilab1;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+
+
+
 
 /*
  *@author Jay Cen
@@ -43,11 +46,25 @@ public class BMIActivity extends AppCompatActivity
         String pound = model.getWeightInPound();
 
         //declare and initiate with string output
-        String WIP = "Your Weight in pound is ";
-        String BMIname = "Your BMI is ";
+        String WIP = "Your Weight in pound is "+pound;
+        String BMIname = "and Your BMI is "+answer;
 
         //using the values of answer and pound variables to view it
-        ((TextView) findViewById(R.id.pound)).setText(WIP+pound);
-        ((TextView) findViewById(R.id.answer)).setText("and "+BMIname+answer);
+        ((TextView) findViewById(R.id.pound)).setText(WIP);
+        ((TextView) findViewById(R.id.answer)).setText(BMIname);
+    }
+
+    //reset
+    public void Clear(View v)
+    {
+        View weightView = findViewById(R.id.weightBox);
+        ((EditText) weightView).setText("");
+
+        View height = ((EditText) findViewById(R.id.heightBox));
+        ((EditText) height).setText("");
+
+        ((TextView) findViewById(R.id.pound)).setText("pound");
+        ((TextView) findViewById(R.id.answer)).setText("answer");
+
     }
 }

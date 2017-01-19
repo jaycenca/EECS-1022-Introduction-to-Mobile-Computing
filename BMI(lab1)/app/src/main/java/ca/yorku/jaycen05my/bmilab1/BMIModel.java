@@ -46,7 +46,7 @@ public class BMIModel
     public String getWeightInPound()
     {
         double Pound = Math.floor(this.weight*2.20462);
-        return String.format("%.1f", Pound);
+        return String.valueOf((int)(Pound));
         /*
          *Using the format method from the String class,
          * Object cant be int or string because they are primitive
