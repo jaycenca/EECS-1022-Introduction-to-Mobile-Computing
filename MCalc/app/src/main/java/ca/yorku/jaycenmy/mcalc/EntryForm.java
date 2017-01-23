@@ -47,15 +47,27 @@ public class EntryForm
         R = R / 100;
         double result = 1;
         double nom = R * P;
-        double denom1 = (1)/(1 + (n * R) + ( n * (n - 1) * Math.pow(R,2))/2);
+        double denom1 = (1)/((1 + (n * R) + (( n * (n - 1) * (Math.pow(R,2))/2))));
         double denom2 = 1 - denom1;
+        System.out.println("The Rate value , R is "+R );
+        System.out.println("The Principle value, P is "+P);
+        System.out.println("The Interest  value , n is "+n);
 
-        result =  nom / denom2;
-
+        result =  (nom) / (denom2);
+        System.out.println("The Result is "+result);
         return String.format("%.2f", result);
     }
 
     //optional
     //will discussed later 
 
+    /**
+     * Testing in the main
+     */
+    public static void main(String[]args)
+    {
+        //instantiate a new class using the parameterized constructor
+        EntryForm test1 = new EntryForm("700000","25","2.75");
+        System.out.println("EntryForm(\"700000\",\"25\",\"2.75\") is "+test1.computePayment());
+    }
 }
