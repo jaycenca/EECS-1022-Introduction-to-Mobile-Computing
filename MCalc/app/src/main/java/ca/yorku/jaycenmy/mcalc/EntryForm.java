@@ -44,7 +44,8 @@ public class EntryForm
 
     public String computePayment()
     {
-        R = R / 100;
+        R = (R / 12) / 100;
+        n*= 12;
         double result = 1;
         double nom = R * P;
         double denom1 = (1)/((1 + (n * R) + (( n * (n - 1) * (Math.pow(R,2))/2))));
