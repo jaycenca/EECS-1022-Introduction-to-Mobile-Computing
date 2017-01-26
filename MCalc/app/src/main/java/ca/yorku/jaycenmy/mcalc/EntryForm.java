@@ -26,8 +26,8 @@ public class EntryForm
     public EntryForm(String a , String b, String c)
     {
         P = Double.parseDouble(a);
-        R = Double.parseDouble(c);
-        n = Integer.parseInt(b);
+        R = (Double.parseDouble(c) / 12) / 100;
+        n = Integer.parseInt(b) * 12;
     }
 
     /**
@@ -46,8 +46,6 @@ public class EntryForm
 
     public String computePayment()
     {
-        R = (R / 12) / 100;
-        n*= 12;
         double result = 1;
         double nom = R * P;
         double denom1 = (1)/((1 + (n * R) + (( n * (n - 1) * (Math.pow(R,2))/2))));
@@ -72,8 +70,6 @@ public class EntryForm
 
     public String computeExactPayment()
     {
-        R = (R / 12) / 100;
-        n*= 12;
         double result = 1;
         double nom = R * P;
         double denom = 1 - (Math.pow( 1 + R , -n ));
