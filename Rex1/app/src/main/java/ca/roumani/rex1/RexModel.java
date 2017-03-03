@@ -100,6 +100,16 @@ public class RexModel
         if(rng.nextDouble()<0.5)
         {DigitPiece = "[0-9]"+ QPiece;}
 
+        else
+        {
+            DigitPiece = "";
+            for(int i = 0; i < SET_SIZE; i++)
+            {
+                DigitPiece += rng.nextInt(10);
+            }
+            DigitPiece = "["+DigitPiece+"]"+ QPiece;
+        }
+
     }
 
     private void genLetter()      // generates the letter piece
@@ -109,7 +119,17 @@ public class RexModel
 
         if(rng.nextDouble()<0.5)
         {LetterPiece="[a-z]"+QPiece;}
-
+        else
+        {
+            LetterPiece = "";
+            for(int i =0; i < SET_SIZE;i++)
+            {
+                LetterPiece += (char)(rng.nextInt(26)+97);
+            }
+            LetterPiece = "["+LetterPiece+"]"+ QPiece;
+        }
+        regex+=LetterPiece;
+        genQuantifier();
     }
     private void genQuantifier()  // generates a quantifier
     {
@@ -131,7 +151,7 @@ public class RexModel
             QPiece="{"+(rng.nextInt(SET_SIZE)+1)+"}";
         }
 
-
+        regex+=QPiece;
         //char result = (char)(rng.nextInt(26)+'!');
 
         //return String.valueOf(result);
