@@ -44,7 +44,7 @@ public class ScoreModel
 
     public void record(boolean success)
     {
-        if(success)
+        if(success == false)
             this.attempt++;
     }
 
@@ -65,5 +65,16 @@ public class ScoreModel
         System.out.println("The starting time is "+s);
         long e = model.getElapsedTime();
         System.out.println("The elapsed time is "+e);
+
+        System.out.println("The first attempt is "+model.getAttempts());
+
+        System.out.println("After the record method");
+        model.record(false);
+        System.out.println("The second attempt is "+model.getAttempts());
+
+        System.out.println("After another record method");
+        model.record(true);
+        System.out.println("The Third attempt is "+model.getAttempts());
+
     }
 }
