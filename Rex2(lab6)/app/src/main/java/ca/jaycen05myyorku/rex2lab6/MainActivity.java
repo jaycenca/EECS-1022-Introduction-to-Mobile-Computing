@@ -25,8 +25,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        SensorManager sm = (SensorManager) getSystemService(SENSOR_SERVICE);
-        sm.registerListener(this, sm.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
+        SensorManager smm = (SensorManager) getSystemService(SENSOR_SERVICE);
+        smm.registerListener(this, smm.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
         this.rm = new RexModel();
         this.sm = new ScoreModel();
         this.tg = new ToneGenerator(ToneGenerator.TONE_CDMA_ABBR_ALERT,100);
@@ -39,18 +39,26 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         boolean truth = this.rm.doesMatch(input);
         String output = "";
         String text = "regex = "+ this.rm.getRex()+ ", String = "+input+"  ----> "+output;
-        sm.record(truth==false);
 
-        long time = 0;
-        while(truth == false)
+        //handle the Score box
+        this.sm.record(truth==false);
+        String time = this.sm.getElapsedTime()+"";
+        if(sm.getElapsedTime() > 60)
         {
-            output = "Score = "+sm.getAverageScore()+" (" + sm.getAttempts()+ " attempts in "+ time + "sec)";
-            ((TextView) findViewById(R.id.result)).setText(output);
+            time = (this.sm.getElapsedTime()/60)+ "minute" + (sm.getElapsedTime()%60);
         }
+
+        output = "Score = "+sm.getAverageScore()+"% (" + sm.getAttempts()+ " attempts in "+ time + "sec)";
+        ((TextView) findViewById(R.id.result)).setText(output);
 
         TextView log = (TextView) findViewById(R.id.log);
         log.append("\n"+text);
 
+        if(truth == true)
+        {
+            this.sm.record(truth);
+            log.append("CONGRATULATION!!!!!");
+        }
     }
 
     //generate a new regex once the string entered is correct
