@@ -1,12 +1,13 @@
-package ca.roumani.rex1;
+package ca.jaycen05myyorku.rex2lab6;
+
+/**
+ * Created by user on 3/5/17.
+ */
 
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Created by user on 3/1/17.
- */
 public class RexModel
 {
     //attributes
@@ -26,7 +27,7 @@ public class RexModel
     private Random rng;
     private String DigitPiece, LetterPiece,QPiece;
 
-     //default constructor
+    //default constructor
 
     public RexModel()
     {
@@ -94,11 +95,10 @@ public class RexModel
 
     private void genDigit()       // generates the digit piece
     {
-        genQuantifier();
-        //DigitPiece = rng.nextInt(10)+"";
-
         if(rng.nextDouble()<0.5)
-        {DigitPiece = "[0-9]"+ QPiece;}
+        {
+            DigitPiece = "[0-9]";
+        }
 
         else
         {
@@ -107,16 +107,21 @@ public class RexModel
             {
                 DigitPiece += rng.nextInt(10);
             }
-            DigitPiece = "["+DigitPiece+"]"+ QPiece;
+            DigitPiece = "["+DigitPiece+"]";
         }
+        regex+= DigitPiece;
+        genQuantifier();
+
 
     }
 
     private void genLetter()      // generates the letter piece
     {
-
-        if(rng.nextDouble()<0.5)
-        {LetterPiece="[a-z]";}
+        double random = rng.nextDouble();
+        if(random >= 0.5)
+        {
+            LetterPiece="[a-z]";
+        }
         else
         {
             LetterPiece = "";
@@ -124,7 +129,13 @@ public class RexModel
             {
                 LetterPiece += (char)(rng.nextInt(26)+97);
             }
+            if(random < 0.25)
+            {
+                LetterPiece = "^"+LetterPiece;
+            }
+
             LetterPiece = "["+LetterPiece+"]";
+
         }
         regex+=LetterPiece;
         genQuantifier();
@@ -148,12 +159,7 @@ public class RexModel
         {
             QPiece="{"+(rng.nextInt(SET_SIZE)+1)+"}";
         }
-
         regex+=QPiece;
-        //char result = (char)(rng.nextInt(26)+'!');
-
-        //return String.valueOf(result);
-
     }
 
     public static void main(String[] args)
@@ -175,3 +181,4 @@ public class RexModel
     }
 
 }
+
