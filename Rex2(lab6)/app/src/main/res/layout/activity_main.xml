@@ -8,50 +8,39 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="ca.jaycen05myyorku.rex2lab6.MainActivity">
+    tools:context="ca.roumani.rex2.MainActivity"
+    android:textAlignment="center">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Score = 0% (0 attempt in 0 sec)"
         android:id="@+id/result"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textSize="20dp"
-        android:gravity="center"
-        android:background="@color/abc_color_highlight_material"
-        android:textColor="@android:color/holo_blue_dark"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="REGEX"
-        android:id="@+id/regex"
         android:layout_centerHorizontal="true"
-        android:textColor="@color/colorPrimary"
-        android:textStyle="bold"
-        android:layout_below="@+id/letter"
-        android:textSize="20dp"/>
+        android:textAlignment="center"
+        android:text="Score=0% (0 attempt in 0 sec)"
+        android:textSize="20dp"
+        android:textColor="@android:color/holo_blue_dark"
+        />
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="AZ"
         android:id="@+id/letter"
-        android:checked="false"
-        android:layout_alignTop="@+id/digit"
+        android:layout_below="@+id/result"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"/>
+        android:layout_alignParentStart="true"
+        android:checked="false"/>
 
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="09"
         android:id="@+id/digit"
-        android:checked="false"
         android:layout_below="@+id/result"
-        android:layout_alignRight="@+id/regex"
-        android:layout_alignEnd="@+id/regex"/>
+        android:layout_centerHorizontal="true"
+        android:checked="false"/>
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -63,44 +52,45 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="REGEX"
+        android:id="@+id/regex"
+        android:layout_below="@+id/digit"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"
+        />
+
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/string"
-        android:layout_below="@+id/regex"
         android:layout_centerHorizontal="true"
-        android:textAlignment="center"/>
+        android:layout_below="@+id/regex"/>
 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="CHECK STRING"
-        android:id="@+id/check"
+        android:text="Check String"
+        android:id="@+id/input"
         android:layout_below="@+id/string"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:onClick="checkClicked"/>
+        android:layout_alignParentStart="true"/>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/scrollView"
-        android:layout_toStartOf="@+id/anchor"
-        android:layout_alignRight="@+id/anchor"
-        android:layout_alignEnd="@+id/anchor"
-        android:layout_below="@+id/check">
+        android:layout_below="@+id/input"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/log"/>
+            android:id="@+id/log"
+            android:text="text"/>
     </ScrollView>
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignRight="@+id/anchor"
-        android:layout_alignEnd="@+id/anchor"
-        android:layout_alignTop="@+id/scrollView">
-    </FrameLayout>
 </RelativeLayout>

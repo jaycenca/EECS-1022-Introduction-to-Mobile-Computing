@@ -12,7 +12,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity implements SensorEventListener
+public class MainActivity extends AppCompatActivity //implements SensorEventListener
 {
 
     private RexModel rm;
@@ -25,11 +25,11 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        SensorManager smm = (SensorManager) getSystemService(SENSOR_SERVICE);
-        smm.registerListener(this, smm.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
+        /*SensorManager smm = (SensorManager) getSystemService(SENSOR_SERVICE);
+        smm.registerListener(this, smm.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);*/
         this.rm = new RexModel();
         this.sm = new ScoreModel();
-        this.tg = new ToneGenerator(ToneGenerator.TONE_CDMA_ABBR_ALERT,100);
+        //this.tg = new ToneGenerator(ToneGenerator.TONE_CDMA_ABBR_ALERT,100);
         newRegex();
     }
 
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     }
 
-    @Override
+    /*@Override
     public void onSensorChanged(SensorEvent event)
     {
         double sum = Math.pow(event.values[0],2) + Math.pow(event.values[1],2) + Math.pow(event.values[2],2);
@@ -90,5 +90,5 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     public void onAccuracyChanged(Sensor sensor, int i)
     {
 
-    }
+    }*/
 }
