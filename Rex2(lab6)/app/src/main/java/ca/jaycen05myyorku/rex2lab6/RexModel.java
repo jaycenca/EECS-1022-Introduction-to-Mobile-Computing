@@ -67,7 +67,6 @@ public class RexModel
     }
 
 
-
     public void generate(int repeat)
     {
         regex="";

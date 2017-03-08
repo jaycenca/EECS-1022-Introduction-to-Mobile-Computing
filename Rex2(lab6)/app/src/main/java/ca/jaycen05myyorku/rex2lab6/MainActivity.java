@@ -30,17 +30,17 @@ public class MainActivity extends AppCompatActivity //implements SensorEventList
         this.rm = new RexModel();
         this.sm = new ScoreModel();
         //this.tg = new ToneGenerator(ToneGenerator.TONE_CDMA_ABBR_ALERT,100);
-        newRegex();
     }
 
     public void checkClicked(View v)
     {
-        String input = ((EditText)findViewById(R.id.string)).getText().toString();
+        newRegex();
+        String input = ((TextView)findViewById(R.id.string)).getText().toString();
         boolean truth = this.rm.doesMatch(input);
-        String output = "";
-        String text = "regex = "+ this.rm.getRex()+ ", String = "+input+"  ----> "+output;
 
-        //handle the Score box
+        String text = "regex = "+ this.rm.getRex()+ ", String = "+input+"  ----> "+truth;
+
+       /* //handle the Score box
         this.sm.record(truth==false);
         String time = this.sm.getElapsedTime()+"";
         if(sm.getElapsedTime() > 60)
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity //implements SensorEventList
         }
 
         output = "Score = "+sm.getAverageScore()+"% (" + sm.getAttempts()+ " attempts in "+ time + "sec)";
-        ((TextView) findViewById(R.id.result)).setText(output);
+        ((TextView) findViewById(R.id.result)).setText(output);*/
 
         TextView log = (TextView) findViewById(R.id.log);
         log.append("\n"+text);
