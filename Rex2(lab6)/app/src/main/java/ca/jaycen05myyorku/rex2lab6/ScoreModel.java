@@ -46,6 +46,8 @@ public class ScoreModel
     {
         if(success == false)
             this.attempt++;
+        else
+            this.success++;
     }
 
     public double getAverageScore()

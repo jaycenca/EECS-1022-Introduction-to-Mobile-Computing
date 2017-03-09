@@ -12,12 +12,13 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity //implements SensorEventListener
+public class MainActivity extends AppCompatActivity implements SensorEventListener
 {
 
     private RexModel rm;
     private ToneGenerator tg;
     private ScoreModel sm;
+    private int index;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -25,39 +26,49 @@ public class MainActivity extends AppCompatActivity //implements SensorEventList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /*SensorManager smm = (SensorManager) getSystemService(SENSOR_SERVICE);
-        smm.registerListener(this, smm.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);*/
+        SensorManager smm = (SensorManager) getSystemService(SENSOR_SERVICE);
+        smm.registerListener(this, smm.getDefaultSensor(Sensor.TYPE_ACCELEROMETER), SensorManager.SENSOR_DELAY_NORMAL);
         this.rm = new RexModel();
         this.sm = new ScoreModel();
         //this.tg = new ToneGenerator(ToneGenerator.TONE_CDMA_ABBR_ALERT,100);
+        this.index = 0;
+    }
+
+    //this generate a regular expression depending on the index
+    public void checkRegex()
+    {
+        index++;
+        if(index == 1)
+        {
+            newRegex();
+        }
     }
 
     public void checkClicked(View v)
     {
-        newRegex();
+        checkRegex();
         String input = ((TextView)findViewById(R.id.string)).getText().toString();
         boolean truth = this.rm.doesMatch(input);
 
         String text = "regex = "+ this.rm.getRex()+ ", String = "+input+"  ----> "+truth;
 
-       /* //handle the Score box
-        this.sm.record(truth==false);
-        String time = this.sm.getElapsedTime()+"";
-        if(sm.getElapsedTime() > 60)
-        {
-            time = (this.sm.getElapsedTime()/60)+ "minute" + (sm.getElapsedTime()%60);
-        }
+        //handle the Score box
+        this.sm.record(truth);
+        String time = (sm.getElapsedTime()/60)+ "minute" + (sm.getElapsedTime()%60);
 
-        output = "Score = "+sm.getAverageScore()+"% (" + sm.getAttempts()+ " attempts in "+ time + "sec)";
-        ((TextView) findViewById(R.id.result)).setText(output);*/
+        //this is the problem: time calculation wont pop up
+        String output = "Score = "+ sm.getAverageScore()+"% (" + sm.getAttempts()+ " attempts in "+ time + "sec)";
+        ((TextView) findViewById(R.id.result)).setText(output);
+
 
         TextView log = (TextView) findViewById(R.id.log);
         log.append("\n"+text);
 
         if(truth == true)
         {
-            this.sm.record(truth);
-            log.append("CONGRATULATION!!!!!");
+            log.append("\nCONGRATULATION!!!!!");
+            this.index = 0;
+            checkRegex();
         }
     }
 
@@ -76,11 +87,11 @@ public class MainActivity extends AppCompatActivity //implements SensorEventList
 
     }
 
-    /*@Override
+    @Override
     public void onSensorChanged(SensorEvent event)
     {
         double sum = Math.pow(event.values[0],2) + Math.pow(event.values[1],2) + Math.pow(event.values[2],2);
-        if(sum > 14)
+        if(Math.sqrt(sum) > 14)
         {
             ((EditText) findViewById(R.id.string)).setText("");
         }
@@ -90,5 +101,5 @@ public class MainActivity extends AppCompatActivity //implements SensorEventList
     public void onAccuracyChanged(Sensor sensor, int i)
     {
 
-    }*/
+    }
 }
