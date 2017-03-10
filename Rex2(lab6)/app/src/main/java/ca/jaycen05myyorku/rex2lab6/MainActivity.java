@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private ToneGenerator tg;
     private ScoreModel sm;
     private int index;
+    private boolean timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -33,6 +34,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         this.sm = new ScoreModel();
         this.tg = new ToneGenerator(AudioManager.STREAM_MUSIC,ToneGenerator.MAX_VOLUME);
         this.index = 0;
+        this.timer = true;
+        newRegex();
     }
 
     //this generate a regular expression depending on the index
@@ -47,43 +50,41 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     public void checkClicked(View v)
     {
-        try
+        if(this.timer == false)
         {
-            checkRegex();
-            String input = ((TextView)findViewById(R.id.string)).getText().toString();
-            boolean truth = this.rm.doesMatch(input);
-
-            String text = "regex = "+ this.rm.getRex()+ ", String = "+input+"  ----> "+truth;
-
-            //handle the Score box
-            this.sm.record(truth);
-            String time = (sm.getElapsedTime()/60)+ "minute" + (sm.getElapsedTime()%60);
-            String output = "Score = "+ sm.getAverageScore()+"% (" + sm.getAttempts()+ " attempts in "+ time + "sec)";
-            ((TextView) findViewById(R.id.result)).setText(output);
-
-            //append the time to the banner
-            TextView log = (TextView) findViewById(R.id.log);
-            log.append("\n"+text);
-
-            //handling the situtation when the string input matches the regex
-            if(truth == true)
-            {
-                log.append("\nCONGRATULATION!!!!!");
-                this.index = 0;
-                this.sm.resetTimer();
-                checkRegex();
-            }
-
-            //the sound
-            else
-            {
-                tg.startTone(ToneGenerator.TONE_DTMF_1, 200);
-            }
+            this.sm.resetTimer();
+            timer = true;
         }
-        catch(Exception e)
+
+        //checkRegex();
+        String input = ((TextView)findViewById(R.id.string)).getText().toString();
+        boolean truth = this.rm.doesMatch(input);
+
+        String text = "regex = "+ this.rm.getRex()+ ", String = "+input+"  ----> "+truth;
+
+        //handle the Score box
+        this.sm.record(truth);
+        String time = (sm.getElapsedTime()/60)+ " minute " + (sm.getElapsedTime()%60);
+        String output = "Score = "+ String.format("%.2f%%",this.sm.getAverageScore())+ "(" + sm.getAttempts()+ " attempts in "+ time + " sec)";
+        ((TextView) findViewById(R.id.result)).setText(output);
+
+        //append the time to the banner
+        TextView log = (TextView) findViewById(R.id.log);
+        log.append("\n"+text);
+
+        //handling the situtation when the string input matches the regex
+        if(truth == true)
         {
-            TextView logView = (TextView) findViewById(R.id.log);
-            logView.setText("Please enter your input and check boxxes!!!");
+            log.append("\nCONGRATULATION!!!!!");
+            this.index = 0;
+            this.timer = false;
+            checkRegex();
+        }
+
+        //the sound
+        else
+        {
+            tg.startTone(ToneGenerator.TONE_DTMF_1, 200);
         }
 
     }

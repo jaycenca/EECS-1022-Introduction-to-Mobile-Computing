@@ -9,14 +9,14 @@ import java.util.Date;
 public class ScoreModel
 {
     //attributes
-    private int attempt,success;
+    private int attempt,successes;
     private long elapsed_time, start;
 
     //default constructor
     public ScoreModel()
     {
         this.attempt = 0;
-        this.success = 0;
+        this.successes = 0;
         this.start = new Date().getTime();
     }
 
@@ -28,7 +28,7 @@ public class ScoreModel
 
     public int getSuccess()
     {
-        return this.success;
+        return this.successes;
     }
 
     public long getStart()
@@ -44,20 +44,23 @@ public class ScoreModel
 
     public void record(boolean success)
     {
-        if(success == false)
-            this.attempt++;
-        else
-            this.success++;
+        if(success == true)
+        {
+            this.successes++;
+        }
+        (this.attempt)++;
     }
 
     public double getAverageScore()
     {
-        return (this.success / this.attempt) * 100;
+        return ((double)this.successes / (double)this.attempt) * 100;
     }
 
     public void resetTimer()
     {
         this.start = new Date().getTime();
+        this.attempt = 0;
+        this.successes = 0;
     }
 
     public static void main(String[] args)
