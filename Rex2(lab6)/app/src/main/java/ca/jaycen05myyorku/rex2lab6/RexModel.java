@@ -76,12 +76,12 @@ public class RexModel
             if(digit)
             {
                 genDigit();
-                regex += DigitPiece;
+                //regex += DigitPiece;
             }
             if(letter)
             {
                 genLetter();
-                regex += LetterPiece;
+               // regex += LetterPiece;
             }
             index++;
         }
