@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="tc">
+        <item>.QC,78,12.32,20/2/2003</item>
+    </string-array>
+    <string-array name="sc">
+        <item>.QC,78,7.50,20/2/2003</item>
+        <item>.UR,2679,37.33,14/9/2004</item>
+    </string-array>
+    <string-array name="pf">
+        <item>.QC,78,7.50,20/2/2003</item>
+        <item>.UR,2679,37.33,14/9/2004</item>
+        <item>.UA,2503,28.96,10/8/2007</item>
+        <item>.CD,4476,149.86,11/9/2010</item>
+        <item>.QK,3008,12.41,5/5/2005</item>
+        <item>.JD,4485,21.53,3/2/2006</item>
+        <item>.OQ,1511,12.41,15/7/2015</item>
+        <item>.ET,112,86.44,3/2/2000</item>
+        <item>.JP,3771,18.34,24/1/2011</item>
+        <item>.AT,1762,108.35,6/12/2013</item>
+        <item>.WV,1091,83.78,9/3/2012</item>
+        <item>.IO,3594,23.61,6/12/2009</item>
+        <item>.BK,3816,170.42,1/5/2015</item>
+        <item>.GM,2390,51.91,14/9/2004</item>
+        <item>.JO,1353,22.65,14/9/2009</item>
+        <item>.UR,2679,45.05,29/10/2004</item>
+        <item>.UA,2503,28.0,5/8/2007</item>
+        <item>.QK,3008,13.41,5/5/2014</item>
+        <item>.JD,4485,20.53,3/2/2011</item>
+        <item>.OQ,1511,11.41,15/7/2008</item>
+        <item>.QC,412,8,20/8/2013</item>
+        <item>.CD,4476,150.86,1/8/2009</item>
+        <item>.UR,2679,44.,29/10/2004</item>
+        <item>.UA,2503,27.50,5/8/2008</item>
+        <item>.QK,3008,11.61,5/5/2013</item>
+        <item>.JD,4485,20.75,3/2/2012</item>
+        <item>.OQ,1511,10.41,15/7/2007</item>
+        <item>.QC,78,7.56,20/8/2007</item>
+        <item>.CD,4476,150.86,1/8/2010</item>
+    </string-array>
+</resources>
