@@ -33,6 +33,7 @@ public class PigLatinActivity extends AppCompatActivity implements TextToSpeech.
     {
         String input = ((EditText)findViewById(R.id.inputText)).getText().toString();
         model.setEnglish(input);
+        say(input);
         model.translate();
         ((TextView)findViewById(R.id.convertedText)).setText(model.getPig());
     }
