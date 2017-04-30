@@ -1,5 +1,8 @@
 package ca.roumani.piglatin;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * Created by user on 3/11/17.
  */
@@ -95,12 +98,36 @@ public class PigLatinModel
     public void translate()
     {
         this.pig = "";
-
+        int index = -1;
+        String regex = "[aeiou]";
         String [] words = this.english.split("[ .,;]+");
 
         for (String j : words)
         {
-            pigTranslate(j);
+            Matcher m = Pattern.compile("[aeiou]").matcher(j);
+            while (m.find())
+            {
+                index = m.start();
+            }
+
+            if(index == 0)
+            {
+                this.pig += j + "way ";
+            }
+            else
+            {
+                if(index ==-1)
+                {
+                    index = 0;
+                    this.pig += " ";
+                }
+                else
+                {
+                    //concaternate part of the text to pig
+                    this.pig += j.substring(index) + j.substring(0, index) + "ay ";
+                }
+
+            }
         }
 
     }
