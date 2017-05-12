@@ -20,6 +20,7 @@ public class PortfolioAnalyzer
     private String[] rows;
     private List<Equity> equities;
     private double portfolioMarketValue;
+    private List<String> date;
 
     //constructor
     public PortfolioAnalyzer(String title, String[] rows)
@@ -28,6 +29,8 @@ public class PortfolioAnalyzer
         this.rows = rows;
 
         this.equities = new ArrayList<>();
+
+        this.date = new ArrayList<>();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy");
         for (String row : rows)
         {
@@ -37,6 +40,8 @@ public class PortfolioAnalyzer
                 String symbol = items[0];
                 int quantity = Integer.valueOf(items[1]);
                 double bookValue = Double.valueOf(items[2]);
+
+                this.date.add(items[3]);
                 Date acquired = simpleDateFormat.parse(items[3]); //There's a potential exception throwing
                 double marketValue = getInvestmentMarketValue(symbol);
                 this.portfolioMarketValue += quantity * marketValue; //recording the portfolio market value
@@ -62,6 +67,10 @@ public class PortfolioAnalyzer
         return ((marketValue - bookValue) / bookValue) * (365.0 / dayDiff)*100;
     }
 
+    public List<String> getDate()
+    {
+        return this.date;
+    }
     public List<Equity> getPortfolio()
     {
         return this.equities;

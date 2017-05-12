@@ -74,13 +74,13 @@ public class MainActivity extends AppCompatActivity
             PortfolioAnalyzer pa = new PortfolioAnalyzer(input.getText().toString(),data);
 
 
-
-            for(Equity e: pa.getPortfolio() )
+            for(int i = 0; i < pa.getPortfolio().size(); i++ )
             {
                 tr = new TableRow(this);
                 lp = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT);
                 tr.setLayoutParams(lp);
 
+                Equity e = pa.getPortfolio().get(i);
 
                 TextView x = new TextView(this);
                 //x.setText("Hello");
@@ -98,7 +98,7 @@ public class MainActivity extends AppCompatActivity
                 tr.addView(bookvalueLabel);
 
                 acquired = new TextView(this);
-                acquired.setText(e.getAcquired() + "");
+                acquired.setText(pa.getDate().get(i));
                 tr.addView(acquired);
 
                 marketvalueLabel = new TextView(this);
